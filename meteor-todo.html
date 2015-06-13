@@ -1,0 +1,47 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Todo List ({{incompleteCount}})</h1>
+      {{> loginButtons}}
+      <button class="hide-completed">
+        {{#if hideCompleted}}hiding{{else}}showing{{/if}}
+        completed tasks
+      </button>
+      <br />
+      <br />
+      {{#if currentUser}}
+        <form class="new-task">
+          <label>New Task: </label>
+          <input type="text" name="text" placeholder="..." />
+        </form>
+      {{/if}}
+    </header>
+    <ul>
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+    </ul>
+  </div>
+</body>
+<template name="task">
+  <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+    <button class="delete">&times;</button>
+    <button class="check">✓</button>&nbsp;&nbsp;
+    <strong>{{username}}</strong>&nbsp;&nbsp;
+    {{#if isOwner}}
+    <button class="toggle-private">
+      {{#if private}}
+        Private
+      {{else}}
+        Public
+      {{/if}}
+    </button>
+    {{/if}}
+    <br/>
+    <span class="text">{{text}}</span>
+  </li>
+</template>
