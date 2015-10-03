@@ -10,3 +10,6 @@ meteor remove autopublish
 
 then
 meteor --port 80
+
+if encountering OOM on a small container see
+https://stackoverflow.com/questions/25817347/meteor-is-crashing-on-the-smallest-digitalocean-droplet-out-of-memory-kill-pro
